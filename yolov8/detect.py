@@ -3,7 +3,7 @@ from PIL import Image
 import cv2
 
 # 加载预训练的 YOLOv8 模型
-model = YOLO('..\\runs\\detect\\train11\\weights\\last.pt')
+model = YOLO('runs\\detect\\2.125epoch\\weights\\best.pt')
 
 # 定义包含图像文件用于推理的目录路径, 0表示网络摄像头
 # source = 0

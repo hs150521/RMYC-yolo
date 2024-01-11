@@ -18,7 +18,7 @@
 
 #### yolov8环境配置
 
-参阅[官方文档](https://docs.ultralytics.com/zh/quickstart/#__tabbed_1_2)，注意把pytorch-cuda=11.8替换成自己的版本，cuda版本支持查看[PyTorch官网](https://pytorch.org/get-started/previous-versions/)，cuda版本切换参考[这篇文章](https://blog.csdn.net/qq_50677040/article/details/132131346)，其他环境要求在*/yolov8/pyproject.toml*中
+参阅[官方文档](https://docs.ultralytics.com/zh/quickstart/#__tabbed_1_2)，注意把pytorch-cuda=11.8替换成自己的版本，cuda版本支持查看[PyTorch官网](https://pytorch.org/get-started/previous-versions/)，cuda版本切换参考[这篇文章](https://blog.csdn.net/qq_50677040/article/details/132131346)，其他环境要求在 */yolov8/pyproject.toml* 中
 
 #### 安装RMSDK
 
@@ -32,22 +32,26 @@
 
 #### 转化txt
 
-把标注好的数据的json文件放到*\json_to_txt\json_here*，打开*\json_to_txt\transfer.py*，**在第51行把classList更改为自己数据集的类别名**并运行程序，txt文件会在*\json_to_txt\txt_here*生成（[代码参考](https://blog.csdn.net/m0_63330473/article/details/135079898)）
+把标注好的数据的json文件放到 *\json_to_txt\json_here* ，打开 *\json_to_txt\transfer.py* ，**在第51行把classList更改为自己数据集的类别名**并运行程序，txt文件会在 *\json_to_txt\txt_here* 生成（[代码参考](https://blog.csdn.net/m0_63330473/article/details/135079898)）
 
 #### 生成训练数据
 
-训练数据放在*\yolov8\dataset*下，文件结构参考example文件夹，三个文件夹的作用参考[这篇文章](https://blog.csdn.net/kupepoem/article/details/101055179)，**注意修改detect.yaml的names为自己数据集的类别名**
+训练数据放在 *\yolov8\dataset* 下，文件结构参考example文件夹，三个文件夹的作用参考[这篇文章](https://blog.csdn.net/kupepoem/article/details/101055179)，**注意修改detect.yaml的names为自己数据集的类别名**
 
 #### 开始训练
 
-运行*\yolov8\train.py*，第9行的参数详见[官方文档](https://docs.ultralytics.com/zh/modes/train/#_4)
+运行 *\yolov8\train.py* ，第9行的参数详见[官方文档](https://docs.ultralytics.com/zh/modes/train/#_4)
 
 ### 使用模型进行推理
 
-- 若想保存推理结果，运行*\yolov8\detect.py*
-- 若想实时显示推理结果，运行*\yolov8\detect_video.py*
+- 若想保存推理结果，运行 *\yolov8\detect.py* 
+- 若想实时显示推理结果，运行 *\yolov8\detect_video.py* 
 
 参数详见[官方文档](https://docs.ultralytics.com/zh/modes/predict/#_4)
+
+### 导出模型
+
+运行 *\yolov8\onnx_export.py* 
 
 ## 参考资料
 
