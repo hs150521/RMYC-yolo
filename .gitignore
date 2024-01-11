@@ -7,3 +7,4 @@ json_to_txt/json_here/*
 json_to_txt/txt_here/*
 yolov8/*.pt
 /yolov8/runs
+/.idea
