@@ -3,4 +3,5 @@ val: images/val
 test: images/test
 
 names:
-  0: [target_name_here]
+  0: target_name0
+  1: target_name1

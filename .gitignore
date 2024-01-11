@@ -1,2 +1,9 @@
 yolov8/dataset/*
 !yolov8/dataset/example
+/runs
+weights/*
+detect_sources/*
+json_to_txt/json_here/*
+json_to_txt/txt_here/*
+yolov8/*.pt
+/yolov8/runs
