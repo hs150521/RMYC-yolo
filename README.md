@@ -32,7 +32,7 @@
 
 #### 转化txt
 
-把标注好的数据的json文件放到 *\json_to_txt\json_here* ，打开 *\json_to_txt\transfer.py* ，**在第51行把classList更改为自己数据集的类别名**并运行程序，txt文件会在 *\json_to_txt\txt_here* 生成（[代码参考](https://blog.csdn.net/m0_63330473/article/details/135079898)）
+把标注好的数据的json文件放到 *\jso2txt\json_here* ，打开 *\json2txt\transfer.py* ，**在第5行把name2id更改为自己数据集的类别名**并运行程序，txt文件会在 *\json2txt\txt_here* 生成
 
 #### 生成训练数据
 
