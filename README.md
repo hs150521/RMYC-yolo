@@ -57,6 +57,8 @@
 
 ### Rndis通信相关
 
+该标题下所有代码**默认位于RMSDK文件夹下**
+
 首先配置香橙派网络
 
 ```bash
@@ -72,6 +74,8 @@ address 192.168.42.3
 netmask 255.255.255.0
 gateway 192.168.1.1
 ```
+
+随后运行 *01_rndis_test.py* 检查rndis是否可用，运行 *02_SDK_code.py* 输入command，若返回ok;则成功使用sdk在rndis模式下与RMEP通讯
 
 ## 参考资料
 
