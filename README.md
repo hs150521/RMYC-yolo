@@ -20,7 +20,7 @@
 
 参阅[官方文档](https://docs.ultralytics.com/zh/quickstart/#__tabbed_1_2)，注意把pytorch-cuda=11.8替换成自己的版本，cuda版本支持查看[PyTorch官网](https://pytorch.org/get-started/previous-versions/)，cuda版本切换参考[这篇文章](https://blog.csdn.net/qq_50677040/article/details/132131346)，其他环境要求在 */yolov8/pyproject.toml* 中
 
-#### 安装RMSDK
+#### 安装RMSDK（可选）
 
 过程请参阅[这篇博客](https://blog.csdn.net/C___programmer/article/details/135486406?spm=1001.2014.3001.5502)，安装完成后运行 *\RMSDK\00_SDK_test.py*
 
@@ -55,19 +55,23 @@
 
 运行 *\yolov8\onnx_export.py*
 
-### UART通信相关
+### Rndis通信相关
 
-#### 接口连接
+首先配置香橙派网络
 
-使用UART接口与香橙派通信，（[引脚定义](Picture/README/OPI5_PLUS_V11_20230519-GK_加水印.pdf)P11），RM的RX端链接香橙派的8号引脚，TX端连接10号引脚，接地连接14号引脚
+```bash
+sudo vim /etc/network/
+```
 
-#### 启用UART
+文件最下方加入（usb0请改为自己网卡）
 
-连接好之后需要在香橙派上打开串口，详见香橙派[用户手册](Picture/README/OrangePi_5_Plus_RK3588_用户手册_v1.6.pdf)（P213-P214）如果运行orangepi-config报错，请参考这篇[issue](https://github.com/Joshua-Riek/ubuntu-rockchip/issues/41)和[启用UART教程](https://blog.csdn.net/C___programmer/article/details/135604913?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"135604913"%2C"source"%3A"C___programmer"})
-
-#### 测试通讯
-
-连接之后参考[2.3.4UART链接](https://robomaster-dev.readthedocs.io/zh-cn/latest/text_sdk/connection.html#uart-conn)进行测试，代码在 *\RMSDK\00_SDK_test.py* ，注意修改ser.port为自己的串口，运行代码后输入command或者command;，如果返回Already in SDK mode;则成功，无返回请检查UART连接
+```bash
+auto usb0
+iface usb0 inet static
+address 192.168.42.3
+netmask 255.255.255.0
+gateway 192.168.1.1
+```
 
 ## 参考资料
 
