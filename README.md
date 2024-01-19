@@ -77,6 +77,8 @@ gateway 192.168.1.1
 
 随后运行 *01_rndis_test.py* 检查rndis是否可用，运行 *02_SDK_code.py* 输入command，若返回ok;则成功使用sdk在rndis模式下与RMEP通讯
 
+一个很奇怪的现象：貌似香橙派需要用供电线和RMEP连接才能使用rndis通讯，目前不确定这是否是一个发生在我的机器上的bug
+
 ### 视频流解码
 
 #### 安装解码器
@@ -90,6 +92,42 @@ sudo aptitude install libswscale-dev=7:4.4.1-3ubuntu5
 pip install "pybind11[global]"
 chmod +x ./build.sh
 ./build.sh
+```
+
+安装完成后进入python获取系统路径
+
+```bash
+python3
+```
+
+进入后输入以下命令
+
+```python
+import sys
+sys.path
+exit()
+```
+
+输出的内容就是import默认的检索目录，我这里是 */home/yuanzl/.local/lib/python3.8/site-packages* **（请根据实际情况替换）**
+
+```bash
+sudo mv output /home/yuanzl/.local/lib/python3.8/site-packages/DJIdecoder
+sudo mv robot_network /home/yuanzl/.local/lib/python3.8/site-packages/robot_network
+```
+
+#### 测试解码器
+
+进入 *04_video_stream_test* ，首先安装依赖
+
+```bash
+sudo apt-get install python3-pyaudio python3-numpy
+python3 liveviex.py
+```
+
+如果报错找不到_portaudio，请参考[这篇文章](https://stackoverflow.com/questions/36681836/pyaudio-could-not-import-portaudio)或者运行以下命令
+
+```bash
+pip3 install --upgrade Pyaudio
 ```
 
 
