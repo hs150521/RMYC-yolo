@@ -130,7 +130,11 @@ python3 liveviex.py
 pip3 install --upgrade Pyaudio
 ```
 
+### 运行推理
 
+运行 *05_detect_test.py* ，然后你应该就能在画面上看到装甲板的检测结果了
+
+![image-20240119190651585](Picture/README/image-20240119190651585.png)
 
 ## 参考资料
 
