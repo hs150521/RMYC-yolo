@@ -55,7 +55,7 @@
 
 运行 *\yolov8\onnx_export.py*
 
-### Rndis通信相关
+### Rndis通信
 
 该标题下所有代码**默认位于RMSDK文件夹下**
 
@@ -76,6 +76,23 @@ gateway 192.168.1.1
 ```
 
 随后运行 *01_rndis_test.py* 检查rndis是否可用，运行 *02_SDK_code.py* 输入command，若返回ok;则成功使用sdk在rndis模式下与RMEP通讯
+
+### 视频流解码
+
+#### 安装解码器
+
+进入 *03_decoder_install* 先给脚本加权并安装依赖
+
+```bash
+sudo apt-get install aptitude libopus-dev cmake
+sudo aptitude install libavcodec-dev=7:4.4.1-3ubuntu5
+sudo aptitude install libswscale-dev=7:4.4.1-3ubuntu5
+pip install "pybind11[global]"
+chmod +x ./build.sh
+./build.sh
+```
+
+
 
 ## 参考资料
 
