@@ -2,10 +2,10 @@ import cv2
 from ultralytics import YOLO
 
 # 加载预训练的 YOLOv8 模型
-model = YOLO('..\\runs\\detect\\train11\\weights\\last.pt')
+model = YOLO('..\\runs\\detect\\4.575epoch\\weights\\best.pt')
 
 # 打开视频文件
-video_path = '..\\detect_sources\\1.mp4'
+video_path = '..\\detect_sources\\5.mp4'
 cap = cv2.VideoCapture(video_path)   # 视频用这个
 # cap = cv2.VideoCapture(0)   # 摄像头用这个, 0表示默认摄像头, 也可以尝试使用1, 2, 等
 
@@ -17,7 +17,7 @@ while cap.isOpened():
 
     if success:
         # 在该帧上运行YOLOv8推理
-        results = model(frame)
+        results = model(frame, device=0)
 
         # 在帧上可视化结果
         annotated_frame = results[0].plot()
