@@ -2,6 +2,10 @@
 
 基于yolo的RMYC自瞄系统（开发中）
 
+如果对这个项目感兴趣的话烦请***star一下***，这对我真的很重要
+
+另外使用本项目请***遵守GPLv3协议***
+
 ## 文件结构
 
 - yolov5: yolov5代码(v7.0)
@@ -130,6 +134,12 @@ python3 liveviex.py
 pip3 install --upgrade Pyaudio
 ```
 
+#### 加速解码
+
+官方的代码使用效果并不理想，代码中使用的是cpu硬解，我们可以尝试使用香橙派5 Plus的RK3588对解码加速
+
+安装RKMpp和RKMpi库
+
 ### 运行推理
 
 运行 *05_detect_test.py* ，然后你应该就能在画面上看到装甲板的检测结果了
@@ -138,9 +148,10 @@ pip3 install --upgrade Pyaudio
 
 ## 参考资料
 
+以下只列出未在上文中提及但对编写代码提供了参考的文档连接
+
 ### yolo代码
 
-- [yolov5](https://github.com/ultralytics/yolov5)
 - [yolov8](https://github.com/ultralytics/ultralytics)
 
 ### NPU部署
