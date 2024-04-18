@@ -144,7 +144,27 @@ pip3 install --upgrade Pyaudio
 
 此时的推理约2fps，效果并不理想，因此使用香橙派5 Plus的RK3588对解码加速
 
-首先下载[rknn-toolkit2]([Releases · rockchip-linux/rknn-toolkit2 (github.com)](https://github.com/rockchip-linux/rknn-toolkit2/releases))，在*\rknn_toolkit_lite2\packages*中安装对应python版本的包，安装完以后进入python，执行一下命令，若无报错则安装成功
+#### 电脑端配置
+
+首先找到一台运行ubuntu的设备（香橙派除外，没有的话可以在windows里跑WSL）
+
+首先下载[rknn-toolkit2]([Releases · rockchip-linux/rknn-toolkit2 (github.com)](https://github.com/rockchip-linux/rknn-toolkit2/releases))，在压缩包的*/rknn-toolkit2/packages*中安装对应python版本的包，安装完以后进入python，执行以下命令，若无报错则安装成功
+
+```python
+from rknn.api import RKNN
+```
+
+然后下载[rknn_model_zoo](https://github.com/airockchip/rknn_model_zoo/releases)并解压，进入*/examples/yolov8/python*,将自己之前转换好的onnx文件放在该目录下，运行以下命令
+
+```bash
+python3 convert.py best.onnx rk3588
+```
+
+如果报错onnx版本不正确，请在[rknn的yolov8仓库](https://github.com/airockchip/ultralytics_yolov8)参照[导出说明](https://github.com/airockchip/ultralytics_yolov8/blob/main/RKOPT_README.zh-CN.md)重新转换pt文件到onnx
+
+#### 香橙派配置
+
+找到之前下载的[rknn-toolkit2]([Releases · rockchip-linux/rknn-toolkit2 (github.com)](https://github.com/rockchip-linux/rknn-toolkit2/releases))，在*/rknn_toolkit_lite2/packages*中安装对应python版本的包，安装完以后进入python，执行以下命令，若无报错则安装成功
 
 ```python
 from rknnlite.api import RKNNLite
