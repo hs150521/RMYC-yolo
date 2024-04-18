@@ -24,7 +24,7 @@
 
 参阅[官方文档](https://docs.ultralytics.com/zh/quickstart/#__tabbed_1_2)，注意把pytorch-cuda=11.8替换成自己的版本，cuda版本支持查看[PyTorch官网](https://pytorch.org/get-started/previous-versions/)，cuda版本切换参考[这篇文章](https://blog.csdn.net/qq_50677040/article/details/132131346)，其他环境要求在 */yolov8/pyproject.toml* 中
 
-#### 安装RMSDK（可选）
+#### 安装RMSDK
 
 过程请参阅[这篇博客](https://blog.csdn.net/C___programmer/article/details/135486406?spm=1001.2014.3001.5502)，安装完成后运行 *\RMSDK\00_SDK_test.py*
 
@@ -134,17 +134,21 @@ python3 liveviex.py
 pip3 install --upgrade Pyaudio
 ```
 
-#### 加速解码
-
-官方的代码使用效果并不理想，代码中使用的是cpu硬解，我们可以尝试使用香橙派5 Plus的RK3588对解码加速
-
-安装RKMpp和RKMpi库
-
 ### 运行推理
 
 运行 *05_detect_test.py* ，然后你应该就能在画面上看到装甲板的检测结果了
 
 ![image-20240119190651585](Picture/README/image-20240119190651585.png)
+
+### 加速推理
+
+此时的推理约2fps，效果并不理想，因此使用香橙派5 Plus的RK3588对解码加速
+
+首先下载[rknn-toolkit2]([Releases · rockchip-linux/rknn-toolkit2 (github.com)](https://github.com/rockchip-linux/rknn-toolkit2/releases))，在*\rknn_toolkit_lite2\packages*中安装对应python版本的包，安装完以后进入python，执行一下命令，若无报错则安装成功
+
+```python
+from rknnlite.api import RKNNLite
+```
 
 ## 参考资料
 
