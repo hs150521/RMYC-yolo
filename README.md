@@ -8,10 +8,6 @@
 
 ## 文件结构
 
-- yolov5: yolov5代码(v7.0)
-  - data: 所有训练数据
-    - pt: 所有权重文件
-      - yolov5s.pt: 官方权重
 - yolov8: yolov8代码(v8.1.0)
   - docs: yolov8官方文档（多语言版）
   - dataset: 数据集存放位置
@@ -57,7 +53,13 @@
 
 #### 导出模型
 
-运行 *\yolov8\onnx_export.py*
+新建一个conda环境，执行以下命令，从之前训练的pt文件中导出opset=19的onnx模型
+
+```bash
+pip install protobuf
+pip install git+https://github.com/airockchip/ultralytics_yolov8.git@main
+yolo export model=path_to_pt_file format=rknn opset=19
+```
 
 ### Rndis通信
 
@@ -157,10 +159,16 @@ from rknn.api import RKNN
 然后下载[rknn_model_zoo](https://github.com/airockchip/rknn_model_zoo/releases)并解压，进入*/examples/yolov8/python*,将自己之前转换好的onnx文件放在该目录下，运行以下命令
 
 ```bash
-python3 convert.py best.onnx rk3588
+ python3 convert.py best.onnx rk3588 i8 best.rknn
 ```
 
-如果报错onnx版本不正确，请在[rknn的yolov8仓库](https://github.com/airockchip/ultralytics_yolov8)参照[导出说明](https://github.com/airockchip/ultralytics_yolov8/blob/main/RKOPT_README.zh-CN.md)重新转换pt文件到onnx
+参数解析：
+
+`<onnx_model>`: 指定 ONNX 模型路径
+`<TARGET_PLATFORM>`: 指定 NPU 平台名称。支持的平台请参考[这里](https://docs.radxa.com/rock5/rock5b/app-development/rknn_install#RKNN-简介)
+`<dtype>(可选)`: 指定为 `i8` 或 `fp`。`i8` 用于 int8 量化，`fp` 用于 fp16 量化。
+`<output_rknn_path>(可选)`: 指定 RKNN 模型的保存路径
+
 
 #### 香橙派配置
 
@@ -169,20 +177,3 @@ python3 convert.py best.onnx rk3588
 ```python
 from rknnlite.api import RKNNLite
 ```
-
-## 参考资料
-
-以下只列出未在上文中提及但对编写代码提供了参考的文档连接
-
-### yolo代码
-
-- [yolov8](https://github.com/ultralytics/ultralytics)
-
-### NPU部署
-
-- https://blog.csdn.net/weixin_51651698/article/details/130187558
-- [rknn模型](https://github.com/airockchip/yolov5/blob/master/README_rkopt_manual.md)
-
-### RMSDK
-
-- [RMSDK官方文档](https://robomaster-dev.readthedocs.io/zh-cn/latest/python_sdk/installs.html)
