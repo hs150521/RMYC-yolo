@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
         img = ep_camera.read_cv2_image(strategy='newest')
 
-        results = model(img)
+        results = model(img, conf=0.5)
 
         for r in results:
             boxes = r.boxes
