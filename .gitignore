@@ -8,3 +8,4 @@ json2txt/txt_here/*
 yolov8/*.pt
 /yolov8/runs
 /.idea
+__pycache__
