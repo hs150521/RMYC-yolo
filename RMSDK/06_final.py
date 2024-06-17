@@ -6,7 +6,7 @@ import re
 import time
 
 # 加载预训练的 YOLOv8 模型
-model = YOLO('../runs/best.pt')
+model = YOLO('../runs/best.onnx')
 
 if __name__ == '__main__':
     ep_robot = robot.Robot()
@@ -46,9 +46,9 @@ if __name__ == '__main__':
             yaw = int((posx/360-1)*55)
             pitch = -int((posy/180-1)*55)
             print(yaw,pitch)
-            ep_gimbal.move(yaw=yaw, pitch=pitch, pitch_speed=20, yaw_speed=20)
-            time.sleep(1)
-            ep_blaster.fire()
+            if(ep_gimbal.move(yaw=yaw, pitch=pitch, pitch_speed=20, yaw_speed=20).wait_for_completed()): 
+                ep_blaster.fire()
+            #time.sleep(1)
 
         cv2.waitKey(1)
 
